@@ -1,0 +1,29 @@
+.faq-accordion {
+    width:  100%;
+}
+
+.faq-item {
+    border-bottom:  1px solid #ccc;
+    margin-bottom:  1rem;
+}
+
+.faq-title {
+    background: #fafafa;
+    padding:  1rem;
+    cursor: pointer;
+    width:  100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    font-weight: bold;
+    transition: background  0.3s ease;
+}
+
+.faq-title.active {
+    background: #eee;
+}
+
+.faq-content {
+    padding:  1rem;
+    background: #fff;
+}
