@@ -1,0 +1,44 @@
+.about-us{
+    height: 580px;
+    background-position: left top, 85%;
+    background-repeat: no-repeat;
+    background-color: var(--bg);
+
+}
+
+.about-us__content{
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-top: 20px;
+    padding-left: 25px;
+}
+.about-us__col{
+    position: relative;
+}
+.about-us__title{
+    font-weight: bold;
+}
+.about-us__paragraph{
+    margin-top: 10px ;
+    font-weight: 600;
+}
+
+.cite{
+    display: flex;
+    position: absolute;
+    bottom: -50px;
+    right: -40px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.cite hr{
+    width: 30px;
+    height: 2px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    margin-top: 6px;
+    background: var(--text-primary);
+}

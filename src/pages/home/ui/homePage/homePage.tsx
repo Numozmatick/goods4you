@@ -1,12 +1,12 @@
 import React from 'react';
-import HeroBanner from "./ui/heroBanner";
-import Header from "../../shared/ui/organisms/header";
-import Footer from "../../shared/ui/organisms/footer";
-import AboutUs from "./ui/aboutUs";
-import OurTeam from "./ui/ourTeam";
-import FAQ from "./ui/faq/FAQ";
-import Catalog from "../../features/catalog/ui/catalog";
-import MultiStepForm from "../../features/ multiStepForm/multiStepForm";
+import HeroBanner from "../heroBanner/heroBanner";
+import Header from "../../../../shared/ui/organisms/header";
+import Footer from "../../../../shared/ui/organisms/footer";
+import AboutUs from "../aboutUs/aboutUs";
+import OurTeam from "../ourTeam/ourTeam";
+import FAQ from "../faq/FAQ";
+import Catalog from "../../../../features/catalog/ui/catalog";
+import MultiStepForm from "../../../../features/ multiStepForm/multiStepForm";
 
 const products = [
     {

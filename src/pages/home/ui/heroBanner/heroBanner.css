@@ -1,0 +1,13 @@
+.hero-banner__content{
+    color: var(--text-primary);
+    padding: 75px 15px 90px 15px;
+}
+
+.hero-banner__button-wrapper{
+    margin-left: 15px;
+}
+
+.hero-banner__description{
+    margin-bottom: 40px;
+    font-weight: 600;
+}

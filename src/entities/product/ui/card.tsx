@@ -1,5 +1,6 @@
 import React from 'react';
 import Price from "../../../shared/ui/atoms/price";
+import './card.css'
 
 interface CardProps {
     title: string;

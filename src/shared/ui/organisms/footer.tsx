@@ -1,6 +1,7 @@
 import React from 'react';
 import Logo from "../atoms/logo";
 import Navbar from "../molecules/navbar";
+import './footer.css'
 
 const navItems = [
     {"url": "#catalog", "text": "Catalog"},

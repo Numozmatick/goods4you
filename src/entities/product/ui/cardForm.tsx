@@ -1,4 +1,5 @@
 import React from 'react';
+import './cardForm.css'
 
 interface CardProps {
     title: string;

@@ -1,0 +1,84 @@
+input[type="checkbox"] {
+    appearance: none;
+    display: inline-block;
+    visibility: hidden;
+}
+
+input[type="checkbox"]::before {
+    content: '';
+    display: inline-block;
+    width:  16px;
+    height:  16px;
+    margin-right:  10px;
+    background-color: #fff;
+    border:  1px solid #000;
+    vertical-align: middle;
+    transition: background-color  0.3s ease;
+}
+
+input[type="checkbox"]:checked::before {
+    background-color: #000;
+}
+
+input[type="checkbox"]:focus::before {
+    outline: auto  3px Highlight;
+    outline: auto  3px -webkit-focus-ring-color;
+}
+
+input[type="checkbox"]:disabled::before {
+    background-color: #eee;
+    cursor: not-allowed;
+}
+
+.card_form__custom_checkbox {
+    position: relative;
+    display: inline-block;
+    width:  24px;
+    height:  24px;
+    background-color: var(--secBg);
+    border:  1px solid var(--smallText);
+    border-radius:  4px;
+    vertical-align: middle;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+/* Состояние "checked" для чекбокса */
+.card_form__input:checked ~ .card_form__custom_checkbox {
+    background-color: var(--smallText);
+    border-color: var(--smallText);
+}
+
+.card_form__input {
+    position: absolute;
+    opacity:  0;
+    cursor: pointer;
+}
+
+/* Анимированный чек-значок */
+.card_form__input:checked ~ .card_form__custom_checkbox:after {
+    content: '';
+    position: absolute;
+    width:  5px;
+    height:  10px;
+    border: solid white;
+    border-width:  0  2px  2px  0;
+    transform: rotate(45deg);
+    top:  50%;
+    left:  50%;
+    margin-top: -5px;
+    margin-left: -2px;
+}
+
+label {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.card_form{
+
+}
+
+.card_form__img{
+    width: 100%;
+}

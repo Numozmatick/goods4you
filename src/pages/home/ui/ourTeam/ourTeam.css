@@ -1,0 +1,31 @@
+.our-team__chunk{
+    margin-bottom: 10px;
+}
+
+
+.our-team__gap{
+    margin-top: 90px;
+}
+
+.our-team{
+    background-position: right top;
+    background-repeat: no-repeat;
+    padding-top: 40px;
+    padding-bottom: 120px;
+    color: var(--text-primary);
+    background-color: var(--bg);
+}
+.our-team__title{
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 20px;
+}
+
+.our-team__chunk img{
+    min-height: calc(33vw - 75px);
+    border-radius: 5px;
+}
+.our-team__col{
+    width: calc(33.333% - 20px);
+    padding: 10px;
+}

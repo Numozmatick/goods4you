@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './ourTeam.css'
 interface ImageObject {
     title: string;
     src: string;

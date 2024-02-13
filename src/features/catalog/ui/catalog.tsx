@@ -2,6 +2,7 @@ import React from 'react';
 import Button from "../../../shared/ui/atoms/button";
 import Card from "../../../entities/product/ui/card";
 import Filter from "../../filter/ui/filter";
+import './catalog.css'
 
 interface Item {
     id: number;

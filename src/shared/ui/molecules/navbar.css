@@ -1,0 +1,15 @@
+.vertical-navbar ul{
+    display: flex;
+    list-style: none;
+    gap: 36px;
+}
+
+.vertical-navbar a{
+    color:#000;
+    text-decoration: none;
+    border-bottom: none;
+    font-weight: 600;
+    font-size: 14px;
+    color:var(--text-primary);
+    white-space: nowrap;
+}

@@ -1,0 +1,54 @@
+.filter__title{
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.filter__wrapper{
+    background: var(--secBg);
+    padding: 16px 20px 22px 20px;
+    color: var(--text);
+}
+
+.filter__reset{
+    display: flex;
+    justify-content: center;
+    padding: 37px 0 10px 0;
+}
+
+.filter__table {
+    display: flex;
+    flex-wrap: wrap;
+    width:  100%;
+    font-weight:  600;
+    font-size:  16px;
+    border:  0.5px solid var(--smallText);
+    margin-bottom: 30px;
+}
+
+.filter__cell {
+    flex:  0  0 50%;
+    box-sizing: border-box;
+
+    border:  0.5px solid var(--smallText);
+    text-align: center;
+    width: 50%;
+}
+.filter__cell input[type="checkbox"] {
+    opacity:  0;
+    position: absolute;
+}
+.filter__cell label {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    padding: 16px 0;
+    width:  100%;
+}
+.filter__cell input[type="checkbox"]:checked + label {
+    background-color: var(--accent);
+}
+
+.filter__table-title{
+    font-weight: 600;
+}

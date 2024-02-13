@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './FAQ.css'
 
 const Faq = () => {
     const [activeIndex, setActiveIndex] = useState(-1);

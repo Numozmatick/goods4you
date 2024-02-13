@@ -1,4 +1,5 @@
 import React from 'react';
+import './cartIconWithCounter.css'
 
 type CartIconWithCounterProps = {
     itemCount: number;

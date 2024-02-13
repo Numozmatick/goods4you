@@ -1,7 +1,8 @@
 import React from 'react';
 import Logo from "../atoms/logo";
 import Navbar from "../molecules/navbar";
-import CartIconWithCounter from "../../../widgets/cart/cartIconWithCounter";
+import CartIconWithCounter from "../../../widgets/cart/ui/cartIconWithCounter";
+import './header.css'
 
 const navItems = [
     {"url": "#catalog", "text": "Catalog"},

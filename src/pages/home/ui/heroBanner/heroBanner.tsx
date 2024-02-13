@@ -1,5 +1,6 @@
 import React from 'react';
-import Button from "../../../shared/ui/atoms/button";
+import Button from "../../../../shared/ui/atoms/button";
+import './heroBanner.css'
 
 function HeroBanner() {
     return (

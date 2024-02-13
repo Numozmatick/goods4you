@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from "../../../shared/ui/atoms/button";
+import './filter.css'
 
 const filters = [
     { label: 'smartphones', value: 'smartphones' },

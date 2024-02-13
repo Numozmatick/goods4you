@@ -1,0 +1,57 @@
+.multistepform{
+    background: var(--secBg);
+    padding: 40px 100px;
+    border-radius: 4px;
+    margin: 62px 5px;
+}
+
+.multistepform__title{
+    font-weight: 700;
+    font-size:30px;
+    color:var(--text);
+    margin-bottom: 10px;
+}
+
+.multistepform__description{
+    font-size: 16px;
+    color:#808080;
+    font-weight: 600;
+}
+
+.multistepform hr{
+    background-color:#808080;
+}
+.multistepform__hr-header{
+    margin-top: 0;
+}
+.multistepform__hr-footer{
+    margin-top: 35px;
+}
+
+.form__grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 70px;
+    row-gap: 20px;
+}
+.form__title{
+    font-size: 24px;
+    color: var(--text);
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.card_form__title{
+    font-size: 16px;
+    display: flex;
+    align-items: end;
+    margin-top: 5px;
+    font-weight: 600;
+}
+
+.multistepform__footer{
+    margin-top: 20px;
+    align-items: end;
+    color:#808080;
+}

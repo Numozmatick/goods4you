@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from "../../shared/ui/atoms/button";
 import CardForm from "../../entities/product/ui/cardForm";
+import './multiStepForm.css'
 
 const formItems = [
     {
