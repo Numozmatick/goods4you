@@ -1,8 +1,5 @@
 .cart__container{
     position:relative;
-    display: flex;
-    justify-content: end;
-    align-items: center;
     cursor: pointer;
 }
 

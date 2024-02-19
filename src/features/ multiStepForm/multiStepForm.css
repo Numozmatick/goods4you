@@ -55,3 +55,16 @@
     align-items: end;
     color:#808080;
 }
+
+@media (max-width: 768px) {
+ .multistepform{
+     padding: 30px;
+ }
+}
+
+@media (max-width: 565px) {
+    .form__grid{
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+}

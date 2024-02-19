@@ -30,3 +30,32 @@
     row-gap: 12px;
     margin-bottom: 20px;
 }
+
+@media (max-width: 996px) {
+    .catalog__grid{
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .catalog__filter{
+        width: calc(40.667% - 40px);
+        padding-right: 20px;
+        padding-left: 20px;
+
+    }
+    .catalog__wrapper{
+        width: calc(59.333%);
+    }
+}
+
+@media (max-width: 768px) {
+    .catalog__filter{
+        width: 100%;
+        padding-right: 0;
+        padding-left: 0;
+        margin-bottom: 20px;
+
+    }
+    .catalog__wrapper{
+        width: 100%;
+    }
+}

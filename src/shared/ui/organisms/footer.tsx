@@ -14,13 +14,13 @@ const navItems = [
 
 function Footer() {
     return (
-        <footer className="footer">
+        <footer className="footer footer--paddings">
             <div className={'container'}>
-                <div className="row">
-                    <div className="col-2 d-flex align-items-center">
+                <div className="row footer__row">
+                    <div className="col-2 col-lg-3 col-sm-5 d-flex align-items-center justify-content-center">
                         <Logo src={'/images/logo.svg'} alt={'logo'}/>
                     </div>
-                    <div className="col-8 ml-auto justify-content-end">
+                    <div className="col-8 col-lg-10 col-md-12 footer__navbar-col justify-content-end">
                         <Navbar items={navItems}/>
                     </div>
                 </div>
@@ -30,4 +30,3 @@ function Footer() {
 }
 
 export default Footer;
-;

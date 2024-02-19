@@ -8,7 +8,7 @@ type CartIconWithCounterProps = {
 
 const CartIconWithCounter: React.FC<CartIconWithCounterProps> = ({ itemCount, onClick }) => {
     return (
-        <div className="cart__container d-flex justify-content-between w-100" onClick={onClick}>
+        <div className="cart cart__container d-flex align-items-center" onClick={onClick}>
             <span className={'cart__title'}>Cart</span>
             <div className={"cart__icon-wrapper"}>
                 <img src="/icons/cart.svg" alt="Cart Icon" />

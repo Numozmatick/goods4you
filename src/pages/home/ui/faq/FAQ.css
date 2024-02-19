@@ -26,7 +26,7 @@
 }
 
 .faq hr{
-    height: 0px;
+    height: 0;
     background-color: var(--text);
     margin: 0;
 }
@@ -54,4 +54,10 @@
     max-height: 100%;
     transition: all 400ms linear;
     will-change: opacity, max-height;
+}
+
+@media (max-width: 1200px) {
+    .faq{
+        padding: 20px;
+    }
 }

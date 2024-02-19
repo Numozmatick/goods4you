@@ -1,15 +1,33 @@
-.vertical-navbar ul{
+.navbar__list{
     display: flex;
-    list-style: none;
     gap: 36px;
 }
-
-.vertical-navbar a{
-    color:#000;
+.navbar__list{
+    list-style: none;
+}
+.navbar__link{
     text-decoration: none;
     border-bottom: none;
     font-weight: 600;
     font-size: 14px;
     color:var(--text-primary);
     white-space: nowrap;
+}
+
+.vertical-navbar{
+    padding: 0;
+}
+
+.vertical-navbar .navbar__list{
+    display: block;
+}
+
+.horizontal-navbar .navbar__list{
+    padding: 0;
+}
+
+@media (max-width: 1200px) {
+    .horizontal-navbar .navbar__list{
+        gap: 24px;
+    }
 }

@@ -6,7 +6,7 @@ function AboutUs() {
         <div className={'about-us d-flex align-items-center'} style={{backgroundImage: `url('/icons/figure.svg'), url('/images/about_us.png')`}}>
             <div className={'about-us__content container h-100 w-100'}>
                 <div className={'row'}>
-                    <div className={'col-6 about-us__col'}>
+                    <div className={'col-6 col-lg-10 d-flex justify-content-center about-us__col flex-column'}>
                         <span className={'about-us__title h2'}>About us</span>
                         <p className={'about-us__paragraph'}>
                             Every day a person has a choice what to spend his money on. Stores and websites offer an endless

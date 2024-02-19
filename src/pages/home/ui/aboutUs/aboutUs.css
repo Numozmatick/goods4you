@@ -42,3 +42,22 @@
     margin-top: 6px;
     background: var(--text-primary);
 }
+
+@media (max-width: 1200px) {
+    .about-us{
+        background-position: left top, 120%;
+    }
+}
+
+@media (max-width: 1050px) {
+    .about-us{
+        background-position: left top, 150%;
+    }
+}
+
+@media (max-width: 996px) {
+    .about-us{
+        background-image: none!important;
+
+    }
+}

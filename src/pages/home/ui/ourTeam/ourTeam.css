@@ -29,3 +29,8 @@
     width: calc(33.333% - 20px);
     padding: 10px;
 }
+@media (min-width: 1440px) {
+    .our-team__chunk img{
+        min-height: auto;
+    }
+}
