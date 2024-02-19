@@ -24,10 +24,15 @@
 
 .horizontal-navbar .navbar__list{
     padding: 0;
+    justify-content: end;
 }
 
 @media (max-width: 1200px) {
     .horizontal-navbar .navbar__list{
         gap: 24px;
+    }
+
+    .horizontal-navbar .navbar__list{
+        justify-content: center;
     }
 }

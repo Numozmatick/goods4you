@@ -16,6 +16,10 @@
     padding: 37px 0 10px 0;
 }
 
+.filter__reset-link{
+    cursor: pointer;
+}
+
 .filter__table {
     display: flex;
     flex-wrap: wrap;

@@ -32,7 +32,7 @@ function Filter() {
             </div>
             <Button variant={"secondary"} fullWidth={true}> Apply </Button>
             <div className="filter__reset">
-                <a >Reset</a>
+                <a className="filter__reset-link">Reset</a>
             </div>
         </div>
     );

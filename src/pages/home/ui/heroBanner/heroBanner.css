@@ -11,3 +11,16 @@
     margin-bottom: 40px;
     font-weight: 600;
 }
+
+@media (max-width: 1200px) {
+    .hero-banner__background{
+        background-position: 0 76%!important;
+        background-size: contain!important;
+    }
+}
+
+@media (max-width: 520px) {
+    .hero-banner__background{
+        background-image: none!important;
+    }
+}

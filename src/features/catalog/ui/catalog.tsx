@@ -24,11 +24,11 @@ const Catalog: React.FC<CatalogProps> = ({items}) => {
                 </h2>
             </div>
             <div className='row justify-content-between'>
-                <div className='catalog__filter px-0'>
+                <aside className='catalog__filter px-0'>
                     <div className='filter__wrapper'>
                         <Filter/>
                     </div>
-                </div>
+                </aside>
                 <div className="catalog__wrapper">
                         <div className='catalog__grid'>
                             {items.map((item) => (
