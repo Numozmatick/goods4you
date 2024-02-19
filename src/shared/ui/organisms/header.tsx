@@ -13,6 +13,9 @@ const navItems = [
     {"url": "#catalog", "text": "Catalog"},
     {"url": "#about", "text": "About us"},
     {"url": "#product-selection", "text": "Product selection"},
+    {"url": "#our-team", "text": "Our team"},
+    {"url": "#shipping-payment", "text": "Shipping and payment"},
+    {"url": "#contacts", "text": "Contacts"}
 ];
 
 const handleMenuButtonClick = () => {
