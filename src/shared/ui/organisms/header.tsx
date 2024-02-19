@@ -4,13 +4,15 @@ import Navbar from "../molecules/navbar";
 import CartIconWithCounter from "../../../widgets/cart/ui/cartIconWithCounter";
 import './header.css'
 
+interface HeaderProps{
+    position?:string;
+    background?: string;
+}
+
 const navItems = [
     {"url": "#catalog", "text": "Catalog"},
     {"url": "#about", "text": "About us"},
     {"url": "#product-selection", "text": "Product selection"},
-    {"url": "#our-team", "text": "Our team"},
-    {"url": "#shipping-payment", "text": "Shipping and payment"},
-    {"url": "#contacts", "text": "Contacts"}
 ];
 
 const handleMenuButtonClick = () => {
@@ -20,9 +22,9 @@ const handleMenuButtonClick = () => {
     }
 };
 
-function Header() {
+function Header({position, background}:HeaderProps) {
   return (
-      <header className="container">
+      <header className={`container ${position || ''}`} style={{backgroundColor:background || 'transparent'}}>
           <div className="row header-row-position">
               <div className="col-2 col-lg-10 d-flex align-items-center">
                       <Logo src={'/images/logo.svg'} alt={'logo'}/>

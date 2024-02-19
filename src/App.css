@@ -321,6 +321,13 @@ body{
     padding-right: 0;
 }
 
+.sticky{
+    position: sticky;
+}
+.static{
+    position: static;
+}
+
 
 
 

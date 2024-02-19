@@ -13,7 +13,7 @@ function Card({title, price, image}:CardProps) {
         <div className={'card'}>
             <img className={'card__img'} src={image} alt={title}/>
             <div className={'card__title'}>{title}</div>
-            <Price value={price} currency={" $"}/>
+            <Price value={price} currency={"USD"}/>
         </div>
     );
 }

@@ -69,7 +69,7 @@ function HomePage() {
     return (
       <>
           <div className={'header-wrapper'}>
-              <Header/>
+              <Header position={'sticky'}/>
               <HeroBanner/>
           </div>
           <Catalog items={products}/>
