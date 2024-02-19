@@ -3,32 +3,39 @@ import './ourTeam.css'
 interface ImageObject {
     title: string;
     src: string;
+    description:string
 }
 const images: ImageObject[] = [
     {
-        title:'',
-        src: '/images/crewman1.jpg'
+        title:'Maxim',
+        description:'Administrator',
+        src: '/images/crewman1.jpg',
     },
     {
-        title:'',
-        src: '/images/crewman4.jpg'
+        title:'Kudr9viy',
+        src: '/images/crewman4.jpg',
+        description:'Administrator',
     },
     {
-        title:'',
-        src: '/images/crewman2.jpg'
+        title:'Kudr9vaya',
+        src: '/images/crewman2.jpg',
+        description:'Administrator',
     },
     {
-        title:'',
-        src: '/images/crewman5.jpg'
+        title:'Shapka',
+        src: '/images/crewman5.jpg',
+        description:'Administrator',
     },
     {
-        title:'',
-        src: '/images/crewman3.jpg'
+        title:'Krichit',
+        src: '/images/crewman3.jpg',
+        description:'Administrator',
     },
 
     {
-        title:'',
-        src: '/images/crewman6.jpg'
+        title:'V domike',
+        src: '/images/crewman6.jpg',
+        description:'Administrator',
     }
 ]
 
@@ -57,10 +64,14 @@ function ourTeam() {
               {imageChunks.map((chunk, index)=>{
                   return(
                       <div className={!(index % 2) ? 'our-team__col px-0' : 'our-team__col our-team__gap'}>
-                          {chunk.map((image)=>{
+                          {chunk.map((item)=>{
                               return(
                                   <div className={'our-team__chunk'}>
-                                      <img className={'w-100'} src={image.src} alt={image.title}/>
+                                      <div className={'our-team__animation'}>
+                                          <h3 className={'our-team__name h3'}>{item.title}</h3>
+                                          <span className={'our-team__description'}>{item.description}</span>
+                                      </div>
+                                      <img className={'w-100'} src={item.src} alt={item.title}/>
                                   </div>
                               )
                           })}

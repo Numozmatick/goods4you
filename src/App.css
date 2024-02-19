@@ -312,6 +312,10 @@ body{
     font-size:var(--h2);
 }
 
+.h3{
+    font-size:var(--h3);
+}
+
 .px-0{
     padding-left: 0;
     padding-right: 0;
