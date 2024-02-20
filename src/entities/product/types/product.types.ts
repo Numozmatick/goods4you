@@ -1,7 +1,16 @@
 export interface Product {
+    id: number;
     title: string;
-    price: number;
-    image: string;
+    description?: any;
+    price?: number;
+    discount?: number;
+    rating?: number;
+    stock?: number;
+    brand?: string;
+    category?: string;
+    image?: string;
+    thumbnail?: string;
+    images?: string[];
 }
 
 export interface IProductService {

@@ -34,6 +34,27 @@ export const fetchProductsOfCategory = createAsyncThunk<string,
     }
 )
 
+export const getProductById = createAsyncThunk<string,
+    void>(
+    'getProductById',
+    async (payload: void, {dispatch, fulfillWithValue, extra}) => {
+        //@ts-ignore
+        const { id } = payload;
+        dispatch(clearList())
+        dispatch(clearResponse())
+        const productService = new ProductService();
+        const response = await productService.getProductById(id);
+        if (response) {
+            dispatch(setResponse([response]))
+            //@ts-ignore
+            dispatch(addToList([response]))
+        }
+        dispatch(setIsLoaded(true))
+
+        return fulfillWithValue("finish")
+    }
+)
+
 export const fetchAllProductsCategories = createAsyncThunk<string,
     void>(
     'fetchAllProductsCategories',
@@ -46,6 +67,47 @@ export const fetchAllProductsCategories = createAsyncThunk<string,
         if (response) {
             dispatch(setResponse(response))
             dispatch(addToCategories(response))
+        }
+        dispatch(setIsLoaded(true))
+
+        return fulfillWithValue("finish")
+    }
+)
+
+export const getLimitedProducts = createAsyncThunk<string,
+    void>(
+    'getLimitedProducts',
+    async (payload: void, {dispatch, fulfillWithValue, extra}) => {
+        //@ts-ignore
+        const { limit = 9, skip = 0, select } = payload;
+        dispatch(clearList())
+        dispatch(clearResponse())
+        const productService = new ProductService();
+        const response = await productService.getLimitedProducts(limit, skip, select);
+        if (response) {
+            dispatch(setResponse(response))
+            //@ts-ignore
+            dispatch(addToList(response.products))
+        }
+        dispatch(setIsLoaded(true))
+
+        return fulfillWithValue("finish")
+    }
+)
+
+export const searchProducts = createAsyncThunk<string,
+    void>(
+    'searchProducts',
+    async (payload: void, {dispatch, fulfillWithValue, extra}) => {
+        //@ts-ignore
+        const { query } = payload;
+        dispatch(clearList())
+        const productService = new ProductService();
+        const response = await productService.searchProducts(query);
+        if (response) {
+            dispatch(setResponse(response))
+            //@ts-ignore
+            dispatch(addToList(response.products))
         }
         dispatch(setIsLoaded(true))
 

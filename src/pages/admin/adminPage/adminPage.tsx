@@ -7,7 +7,7 @@ import {
     fetchAllProductsCategories,
     fetchProductsOfCategory
 } from "../../../features/catalog/store/reducers/catalog.reducer";
-import {getLimitedProducts, searchProducts} from "../../../features/allProduct/store/reducers/allProduct.reducer";
+import {getLimitedProducts, searchProducts} from "../../../features/catalog/store/reducers/catalog.reducer";
 import {useDispatch, useSelector} from "react-redux";
 
 function AdminPage() {

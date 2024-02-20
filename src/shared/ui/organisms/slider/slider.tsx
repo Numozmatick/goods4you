@@ -2,35 +2,30 @@ import React from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick/dist/react-slick.min";
+import './slider.css'
 
-interface CustomPagingProps {
-    images: string[];
-}
 
-const CustomPaging: React.FC<CustomPagingProps> = ({ images }) => {
+const CustomPaging = ({ images }) => {
     const settings = {
-        customPaging: function(i) {
-            const imageUrl = images[i];
-            return (
-                <a>
-                    <img src={imageUrl} alt={`Image ${i +  1}`} />
-                </a>
-            );
-        },
         dots: true,
-        dotsClass: "slick-dots slick-thumb",
+        dotsClass: 'slick-dots slick-thumb',
         infinite: true,
-        speed:   500,
-        slidesToShow:   1,
-        slidesToScroll:   1
+        speed:  500,
+        slidesToShow:  1,
+        slidesToScroll:  1,
+        customPaging: (i) => (
+            <div>
+                <img src={images[i]} style={{ width: '60px', height: '60px' }} />
+            </div>
+        ),
     };
 
     return (
         <div className="slider-container">
             <Slider {...settings}>
-                {images.map((imageUrl, index) => (
+                {images.map((image, index) => (
                     <div key={index}>
-                        <img src={imageUrl} alt={`Image ${index +  1}`} />
+                        <img src={image} />
                     </div>
                 ))}
             </Slider>

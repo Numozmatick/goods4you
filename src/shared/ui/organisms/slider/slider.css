@@ -1,1 +1,7 @@
+.slick-dots.slick-thumb{
+    display: flex!important;
+}
 
+.slick-dots{
+    flex-grow: 1;
+}

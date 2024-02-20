@@ -1,16 +1,12 @@
 import { configureStore} from '@reduxjs/toolkit';
 import {TypedUseSelectorHook, useDispatch, useSelector} from 'react-redux';
 import catalogReducer from "../../features/catalog/store/reducers/catalog.reducer";
-import allProductReducer from "../../features/allProduct/store/reducers/allProduct.reducer";
-import productReducer from "../../features/oneProduct/store/reducers/oneProduct.reducer";
 
 export const configureCatalogStore = (
 ) => {
   return configureStore({
     reducer: {
-      allProductReducer,
-      catalogReducer,
-      productReducer
+      catalogReducer
     }
     //@ts-ignore
     // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
