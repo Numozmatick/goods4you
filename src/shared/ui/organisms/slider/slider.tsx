@@ -4,7 +4,6 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick/dist/react-slick.min";
 import './slider.css'
 
-
 const CustomPaging = ({ images }) => {
     const settings = {
         dots: true,
@@ -14,9 +13,7 @@ const CustomPaging = ({ images }) => {
         slidesToShow:  1,
         slidesToScroll:  1,
         customPaging: (i) => (
-            <div>
                 <img src={images[i]} style={{ width: '60px', height: '60px' }} />
-            </div>
         ),
     };
 
