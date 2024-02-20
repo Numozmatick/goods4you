@@ -3,13 +3,13 @@ import './cardForm.css'
 
 interface CardProps {
     title: string;
-    image: string;
+    image?: string;
 }
 
 function CardForm({title, image}:CardProps) {
     return (
         <div className={'card_form'}>
-            <img className={'card_form__img'} src={image} alt={title}/>
+            {/*<img className={'card_form__img'} src={image} alt={title}/>*/}
 
             <label className={'d-flex'}>
                 <input type="checkbox" className='card_form__input' />

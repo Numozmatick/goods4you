@@ -9,9 +9,10 @@ interface NavItem {
 interface NavbarProps {
     positionVertical?: boolean,
     items: NavItem[];
+    children?: any;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ items, positionVertical = false }) => {
+const Navbar: React.FC<NavbarProps> = ({ items, positionVertical = false, children}) => {
     return (
         <nav className={`navbar ${positionVertical ? "vertical-navbar" : "horizontal-navbar"}`}>
             <ul className={'navbar__list'}>
@@ -20,6 +21,7 @@ const Navbar: React.FC<NavbarProps> = ({ items, positionVertical = false }) => {
                         <a className={'navbar__link'} href={item.url}>{item.text}</a>
                     </li>
                 ))}
+                {children}
             </ul>
         </nav>
     );

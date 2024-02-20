@@ -1,5 +1,5 @@
 import React from 'react';
-import Price from "../../../shared/ui/atoms/price";
+import Price from "../../../shared/ui/atoms/price/price";
 import './card.css'
 
 interface CardProps {
@@ -11,7 +11,10 @@ interface CardProps {
 function Card({title, price, image}:CardProps) {
     return (
         <div className={'card'}>
-            <img className={'card__img'} src={image} alt={title}/>
+            <div className={'card__wrapper'}>
+                <img className={'card__img'} src={image} alt={title}/>
+            </div>
+
             <div className={'card__title'}>{title}</div>
             <Price value={price} currency={"USD"}/>
         </div>
