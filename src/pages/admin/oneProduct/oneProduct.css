@@ -1,3 +1,19 @@
-.one-products__slider{
+.one-product__slider{
     width: 40%;
+    margin-right: 40px;
+}
+
+.one-product__param{
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.one-product__param-title{
+    margin-right: 10px;
+    color: rgba(178, 181, 187, 1);
+
+}
+
+.one-product__param-value{
+    text-transform: capitalize;
 }

@@ -1,0 +1,16 @@
+.rating {
+    display: inline-block;
+}
+
+.star {
+    display: inline-block;
+    width:  16px;
+    height:  16px;
+    background-image: url('path-to-star-icon.png');
+    background-size: cover;
+    margin-right:  2px;
+}
+
+.star.active {
+    background-image: url('path-to-filled-star-icon.png');
+}
