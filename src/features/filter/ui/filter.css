@@ -49,7 +49,7 @@
     padding: 16px 0;
     width:  100%;
 }
-.filter__cell input[type="checkbox"]:checked + label {
+.filter__cell input[type="checkbox"]:checked + div {
     background-color: var(--accent);
 }
 

@@ -1,0 +1,7 @@
+ [
+    {"url": "#catalog", "text": "Catalog"},
+    {"url": "#about-us", "text": "About us"},
+    {"url": "#product-selection", "text": "Product selection"},
+    {"url": "#our-team", "text": "Our team"},
+    {"url": "#FAQ", "text": "FAQ"}
+  ]

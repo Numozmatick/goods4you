@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Navbar from "../shared/ui/molecules/navbar";
-import '../shared/ui/molecules/navbar.css'
+import Navbar from "../shared/ui/molecules/navbar/navbar";
+import '../shared/ui/molecules/navbar/navbar.css'
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
   title: 'Example/Navbar',

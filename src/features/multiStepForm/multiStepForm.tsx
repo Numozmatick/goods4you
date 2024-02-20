@@ -1,45 +1,27 @@
-import React from 'react';
-import Button from "../../shared/ui/atoms/button";
+import React, {useEffect} from 'react';
+import Button from "../../shared/ui/atoms/button/button";
 import CardForm from "../../entities/product/ui/cardForm";
 import './multiStepForm.css'
-
-const formItems = [
-    {
-        id:  1,
-        image: '/images/sneakers2.jpg',
-        title: 'sneakers'
-    },
-    {
-        id:  2,
-        image: '/images/sneakers2.jpg',
-        title: 'sneakers'
-    },
-    {
-        id:  3,
-        image: '/images/sneakers2.jpg',
-        title: 'sneakers'
-    },
-    {
-        id:  4,
-        image: '/images/sneakers2.jpg',
-        title: 'sneakers'
-    },
-    {
-        id:  5,
-        image: '/images/sneakers2.jpg',
-        title: 'sneakers'
-    },
-    {
-        id:  6,
-        image: '/images/sneakers2.jpg',
-        title: 'sneakers'
-    },
-];
+import {fetchAllProductsCategories} from "../catalog/store/reducers/catalog.reducer";
+import {useDispatch, useSelector} from "react-redux";
 
 // Main form component
 const MultiStepForm = () => {
     // const { formData } = useContext(FormContext);
+    //@ts-ignore
+    const categories = useSelector((state) => state.categories);
+    const cards = categories.map((catalog)=>{
+        return {
+            id: catalog.value,
+            title: catalog.value,
+        }
+    });
+    const dispatch = useDispatch();
+    useEffect(() => {
+        //@ts-ignore
+        dispatch(fetchAllProductsCategories());
 
+    }, []);
     return (
         <div className={'container'}>
             <div className={'multistepform'}>
@@ -49,8 +31,10 @@ const MultiStepForm = () => {
                 <div className={'form'}>
                     <div className={'form__title'}>What type of product are you considering?</div>
                     <div className={'form__grid'}>
-                        {formItems.map((formItem)=>{
-                            return <CardForm {...formItem}/>
+                        {cards.map((formItem)=>{
+                            return <div key={formItem.id}>
+                                <CardForm {...formItem}/>
+                            </div>
                         })}
                     </div>
                 </div>

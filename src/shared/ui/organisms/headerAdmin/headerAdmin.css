@@ -1,0 +1,11 @@
+.header__link--admin a{
+    white-space: nowrap;
+    color: var(--text-primary);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.header--admin{
+    padding-bottom: 20px;
+    padding-top: 10px;
+}

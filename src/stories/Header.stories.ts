@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import '../App.css'
-import Header from "../shared/ui/organisms/header";
-import '../shared/ui/organisms/header.css'
+import Header from "../shared/ui/organisms/header/header";
+import '../shared/ui/organisms/header/header.css'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {

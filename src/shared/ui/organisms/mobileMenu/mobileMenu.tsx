@@ -1,11 +1,11 @@
 import React from 'react';
-import Navbar from "../molecules/navbar";
-import CartIconWithCounter from "../../../widgets/cart/ui/cartIconWithCounter";
+import Navbar from "../../molecules/navbar/navbar";
+import CartIconWithCounter from "../../../../widgets/cart/ui/cartIconWithCounter";
 import './mobileMenu.css'
 
 const navItems = [
     {"url": "#catalog", "text": "Catalog"},
-    {"url": "#about", "text": "About us"},
+    {"url": "#about-us", "text": "About us"},
     {"url": "#product-selection", "text": "Product selection"},
     {"url": "#our-team", "text": "Our team"},
     {"url": "#shipping-payment", "text": "Shipping and payment"},

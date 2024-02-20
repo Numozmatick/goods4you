@@ -1,12 +1,12 @@
 import React from 'react';
 import HeroBanner from "../heroBanner/heroBanner";
-import Header from "../../../../shared/ui/organisms/header";
-import Footer from "../../../../shared/ui/organisms/footer";
+import Header from "../../../../shared/ui/organisms/header/header";
+import Footer from "../../../../shared/ui/organisms/footer/footer";
 import AboutUs from "../aboutUs/aboutUs";
 import OurTeam from "../ourTeam/ourTeam";
 import FAQ from "../faq/FAQ";
 import Catalog from "../../../../features/catalog/ui/catalog";
-import MultiStepForm from "../../../../features/ multiStepForm/multiStepForm";
+import MultiStepForm from "../../../../features/multiStepForm/multiStepForm";
 
 const products = [
     {
@@ -69,15 +69,23 @@ function HomePage() {
     return (
       <>
           <div className={'header-wrapper'}>
-              <Header position={'sticky'}/>
               <HeroBanner/>
           </div>
-          <Catalog items={products}/>
-          <AboutUs/>
-          <MultiStepForm/>
-          <OurTeam/>
-          <FAQ/>
-          <Footer/>
+          <div id='catalog'>
+              <Catalog items={products}/>
+          </div>
+          <div id='about-us'>
+              <AboutUs/>
+          </div>
+          <div id='product-selection'>
+            <MultiStepForm/>
+          </div>
+          <div id='our-team'>
+              <OurTeam/>
+          </div>
+          <div id='FAQ'>
+              <FAQ/>
+          </div>
       </>
     );
 }

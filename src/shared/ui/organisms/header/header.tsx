@@ -1,22 +1,32 @@
 import React from 'react';
-import Logo from "../atoms/logo";
-import Navbar from "../molecules/navbar";
-import CartIconWithCounter from "../../../widgets/cart/ui/cartIconWithCounter";
+import Logo from "../../atoms/logo/logo";
+import Navbar from "../../molecules/navbar/navbar";
+import items from '../../../../app/settings/menu.settings.json';
 import './header.css'
+import {Link} from "react-router-dom";
 
 interface HeaderProps{
     position?:string;
     background?: string;
 }
 
-const navItems = [
-    {"url": "#catalog", "text": "Catalog"},
-    {"url": "#about", "text": "About us"},
-    {"url": "#product-selection", "text": "Product selection"},
-    {"url": "#our-team", "text": "Our team"},
-    {"url": "#shipping-payment", "text": "Shipping and payment"},
-    {"url": "#contacts", "text": "Contacts"}
-];
+const handleScrollClick = (targetId) => {
+    const element = document.querySelector(`a[href="${targetId}"]`)
+    if (element) {
+        element.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetElement = document.querySelector(targetId)
+            if (targetElement){
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
+};
+items.forEach(item => {
+    if(item.url.includes('#')){
+        handleScrollClick(item.url);
+    }
+});
 
 const handleMenuButtonClick = () => {
     const mobileMenu = document.getElementById('MobileMenu');
@@ -25,15 +35,21 @@ const handleMenuButtonClick = () => {
     }
 };
 
+
+
 function Header({position, background}:HeaderProps) {
   return (
-      <header className={`container ${position || ''}`} style={{backgroundColor:background || 'transparent'}}>
+      <header className={`container header ${position || ''}`} style={{backgroundColor:background || 'transparent'}}>
           <div className="row header-row-position">
               <div className="col-2 col-lg-10 d-flex align-items-center">
                       <Logo src={'/images/logo.svg'} alt={'logo'}/>
               </div>
               <div className="col-7 ml-auto d-lg-none desktop-menu">
-                  <Navbar items={navItems}/>
+                  <Navbar items={items}>
+                      <div className={'header__link'}>
+                          <Link to={'/admin'}>For staff</Link>
+                      </div>
+                  </Navbar>
               </div>
               <div className="col-1 col-sm-2 d-none d-lg-block">
                   <div
@@ -47,11 +63,11 @@ function Header({position, background}:HeaderProps) {
                       </svg>
                   </div>
               </div>
-                <div className="col-2 col-lg-1 d-lg-none header__cart d-flex align-items-center">
-                    <div className={'w-100 justify-content-end d-flex'}>
-                        <CartIconWithCounter itemCount={0}/>
-                    </div>
-                </div>
+                {/*<div className="col-2 col-lg-1 d-lg-none header__cart d-flex align-items-center">*/}
+                {/*    <div className={'w-100 justify-content-end d-flex'}>*/}
+                {/*        <CartIconWithCounter itemCount={0}/>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
           </div>
           <hr className='hr'/>
 

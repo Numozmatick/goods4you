@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Logo from "../shared/ui/atoms/logo";
+import Logo from "../shared/ui/atoms/logo/logo";
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
   title: 'Example/Logo',
