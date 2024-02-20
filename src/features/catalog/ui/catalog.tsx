@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import Button from "../../../shared/ui/atoms/button/button";
-import Card from "../../../entities/product/ui/card";
+
 import Filter from "../../filter/ui/filter";
 import './catalog.css'
-import useCatalog from "../hooks/use.catalog.hook";
+
 import {useDispatch, useSelector} from "react-redux";
-import ProductService from "../../../entities/product/api/productService";
+
 import {fetchAllProductsCategories, fetchProductsOfCategory} from "../store/reducers/catalog.reducer";
 import ProductGrid from "../../../shared/ui/organisms/productGrid/productGrid";
 
