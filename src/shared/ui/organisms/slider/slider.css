@@ -1,7 +1,12 @@
 .slick-dots.slick-thumb{
     display: flex!important;
+    width: 100%;
+    justify-content: center
 }
 
-.slick-dots{
-    flex-grow: 1;
+.slick-dots li{
+    width: 60px;
+    height: 60px;
+    margin-top: 10px;
+    margin-right: 10px;
 }
