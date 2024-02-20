@@ -1,0 +1,33 @@
+.button{
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 22px 42px;
+    border-radius: 4px;
+    transition: all 0.3s ease; /* Анимация для всех свойств */
+    will-change: transform, opacity;
+}
+.button.primary{
+    background: var(--accent);
+    color:var(--text-primary);
+}
+
+.button.secondary{
+    background: var(--text);
+    color:var(--text-primary);
+}
+
+.button--outline{
+    background: transparent!important;
+    border: 1px solid var(--text);
+    color: var(--text)!important;
+    font-weight: 400;
+    padding-top: 13px!important;
+    padding-bottom: 13px!important;
+}
+
+.button:hover {
+    transform: translateY(-3px); /* Изменение положения при наведении */
+}

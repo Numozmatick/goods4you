@@ -1,10 +1,13 @@
 import React from 'react';
 import './App.css'
-import Layout from "./app/layouts/layout";
+import HomeLayout from "./app/layouts/homeLayout/homeLayout";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from "./pages/home/ui/homePage/homePage";
 import { Provider } from 'react-redux';
 import { store } from "./features/catalog/store";
+import AdminPage from "./pages/admin/adminPage/adminPage";
+import AdminLayout from "./app/layouts/adminLayout/adminLayout";
+import OneProduct from "./pages/admin/oneProduct/oneProduct";
 
 function App() {
     return (
@@ -12,9 +15,15 @@ function App() {
             <Provider store={store}>
                 <Router>
                     <Routes>
-                        <Route path="/" element={<Layout/>}>
+                        <Route path="/" element={<HomeLayout/>}>
                             <Route index element={<HomePage />} />
-                            {/*<Route index element={<AdminPage />} />*/}
+                        </Route>
+                        <Route path="/admin" element={<AdminLayout/>}>
+                            <Route index  element={<AdminPage />} />
+                        </Route>
+                        <Route path="/admin" element={<AdminLayout/>}>
+                            <Route index  element={<AdminPage />} />
+                            <Route path="product/:id" element={<OneProduct />} />
                         </Route>
                     </Routes>
                 </Router>

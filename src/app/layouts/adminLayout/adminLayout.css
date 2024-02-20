@@ -25,7 +25,7 @@ html{
 
 body{
     line-height: 1.4;
-    color:var(--text)
+    color:var(--text);
 }
 
 .container {

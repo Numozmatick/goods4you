@@ -2,7 +2,7 @@ import React from 'react';
 import Price from "../../../shared/ui/atoms/price/price";
 import './card.css'
 
-interface CardProps {
+export interface CardProps {
     title: string;
     price: number;
     image: string;

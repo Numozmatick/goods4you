@@ -6,7 +6,8 @@ import './catalog.css'
 import useCatalog from "../hooks/use.catalog.hook";
 import {useDispatch, useSelector} from "react-redux";
 import ProductService from "../../../entities/product/api/productService";
-import {addToList, fetchAllProductsCategories, fetchProductsOfCategory} from "../store/reducers/catalog.reducer";
+import {fetchAllProductsCategories, fetchProductsOfCategory} from "../store/reducers/catalog.reducer";
+import ProductGrid from "../../../shared/ui/organisms/productGrid/productGrid";
 
 interface Item {
     id: number;
@@ -80,18 +81,11 @@ const Catalog: React.FC<CatalogProps> = ({items}) => {
                     </div>
                 </aside>
                 <div className="catalog__wrapper">
-                        <div className='catalog__grid'>
-
-                            {cards.map((item) => (
-                                <div key={item.id}>
-                                    <Card {...item}/>
-                                </div>
-                            ))}
-                        </div>
+                    <ProductGrid items={cards}/>
                     {catalog.length > limit ? <div className='d-flex w-100 justify-content-center catalog__button'>
                         <Button onClick={showMoreHandler}>Show more</Button>
                     </div> : ''}
-                    {!catalog.length ? <h2 style={{textAlign:'center'}}>There are no products in this category</h2> : ''}
+                    {/*{!catalog.length ? <h2 style={{textAlign:'center'}}>There are no products in this category</h2> : ''}*/}
                 </div>
             </div>
         </div>
