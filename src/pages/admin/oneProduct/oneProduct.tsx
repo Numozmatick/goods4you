@@ -1,46 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 import Slider from '../../../shared/ui/organisms/slider/slider';
-import { getProductById } from '../../../features/catalog/store/reducers/catalog.reducer';
-import ProductService from '../../../entities/product/api/productService';
+import {useGetProductByIdQuery} from '../../../features/catalog/store/reducers/catalog.reducer';
 import './oneProduct.css'
 import Price from "../../../shared/ui/atoms/price/price";
 
-interface Product {
-    title: string;
-    images: string[];
-    // другие поля продукта
-}
-
 const OneProduct: React.FC = () => {
     const { id } = useParams();
-    const dispatch = useDispatch();
-    const [product, setProduct] = useState<Product | null>(null);
+    const { data: product, isLoading } = useGetProductByIdQuery(id); // Используйте сгенерированный хук
 
-    useEffect(() => {
-        //@ts-ignore
-        dispatch(getProductById(id));
-    }, [id]);
-
-    useEffect(() => {
-        const fetchProduct = async () => {
-            const productService = new ProductService();
-            const fetchedProduct = await productService.getProductById(id);
-            //@ts-ignore
-            setProduct(fetchedProduct);
-        };
-
-        if (id) {
-            fetchProduct();
-        }
-    }, [id]);
-
-    if (!product) {
+    if (isLoading) {
         return <div>Loading...</div>;
     }
 
+    if (!product) {
+        return <div>Product not found</div>;
+    }
+
+
     return (
+
         <div className={'container one-product'}>
             <h2 className={'one-product__title'}>{product.title}</h2>
             <div className={'d-flex'}>
@@ -55,7 +34,7 @@ const OneProduct: React.FC = () => {
                     {/*</div>*/}
                     <div className="one-product__param">
                         <span className="one-product__param-title">Base price</span>
-                        <span className="one-product__param-value"> <Price value={product.price}/></span>
+                        <span className="one-product__param-value"> <Price value={product.price} currency={'USD'}/></span>
                     </div>
                     <div className="one-product__param">
                         <span className="one-product__param-title">Discount Percentage</span>

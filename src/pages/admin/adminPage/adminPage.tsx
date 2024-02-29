@@ -1,78 +1,90 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import ProductGrid from "../../../shared/ui/organisms/productGrid/productGrid";
-import SearchInput from "../../../shared/ui/molecules/searchInput/searchInput";
 import Button from "../../../shared/ui/atoms/button/button";
-import './adminPage.css'
+import './adminPage.css';
+
 import {
-    fetchAllProductsCategories,
-    fetchProductsOfCategory
+    useGetLimitedProductsQuery,
+    useSearchProductsQuery
 } from "../../../features/catalog/store/reducers/catalog.reducer";
-import {getLimitedProducts, searchProducts} from "../../../features/catalog/store/reducers/catalog.reducer";
-import {useDispatch, useSelector} from "react-redux";
+import useDebounce from "../../../shared/hooks/useDebounce";
 
 function AdminPage() {
-    const [value, setValue] = useState('');
-    const [searchValue, setSearchValue] = useState('');
-    const timeoutRef = useRef(null);
-    const valueRef = useRef(value);
+    const [limit, setLimit] = useState(9)
+    const { data: catalog, isLoading: isCatalogLoading } = useGetLimitedProductsQuery({ limit: limit, skip: 0, select: 'title,price,images' });
+    const [searchTerm, setSearchTerm] = useState('');
+    const [debouncedSearchTerm, debounceHandlerRef, setValueNow] = useDebounce(searchTerm, 1000);
+    const [shouldSkipDebounce, setShouldSkipDebounce] = useState(false);
+    const { data: searchResult = [], error, refetch, isLoading: isSearchLoading } = useSearchProductsQuery(debouncedSearchTerm);
 
-    const dispatch = useDispatch();
-    //@ts-ignore
-    const products = useSelector((state) => state.products);
-    const cards = products.map((product)=>{
-        return {
-            id: product.id,
-            title: product.title,
-            description: product.description,
-            price: product.price,
-            discount: product.discountPercentage,
-            rating: product.rating,
-            stock: product.stock,
-            brand: product.brand,
-            category: product.category,
-            image: product.images && product.images[0],
-            thumbnail: product.thumbnail
+
+    useEffect(() => {
+        if (!shouldSkipDebounce) {
+            refetch();
         }
-    });
+        setShouldSkipDebounce(false);
+    }, [debouncedSearchTerm, refetch, shouldSkipDebounce]);
 
-    function search(){
-        //@ts-ignore
-        dispatch(searchProducts({query:valueRef.current}));
-    }
+    const isLoading = isCatalogLoading || isSearchLoading;
 
-    function handleButton(){
-        //@ts-ignore
-        clearTimeout(timeoutRef.current);
-        search();
-    }
+    //@ts-ignore"
+    const cards = (searchResult?.products || catalog?.products || []).map((product) => ({
+        id: product.id,
+        title: product.title,
+        description: product.description,
+        price: product.price,
+        discount: product.discountPercentage,
+        rating: product.rating,
+        stock: product.stock,
+        brand: product.brand,
+        category: product.category,
+        image: product.images && product.images[0],
+        thumbnail: product.thumbnail
+    }));
 
-    useEffect(() => {
-        valueRef.current = value;
-        if (timeoutRef.current) clearTimeout(timeoutRef.current);
-        //@ts-ignore
-        timeoutRef.current = setTimeout(() => {
-            search();
-        },   1000);
-    }, [value]);
+    const handleSearch = () => {
+        setShouldSkipDebounce(true);
+        clearTimeout(debounceHandlerRef.current);
+        setValueNow(searchTerm);
+        refetch();
+    };
 
-    useEffect(() => {
-        //@ts-ignore
-        dispatch(getLimitedProducts({limit:9, skip: products.length, select:'title,price,images'}))
-    }, []);
-    const somePartOfState = useSelector(state => state);
-    console.log(somePartOfState,'tt')
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            //@ts-ignore
+            handleSearch(e);
+        }
+    };
 
     return (
         <div className={'container all-products'}>
             <h2 className={'all-products__title'}>All product</h2>
             <div className="input-group">
-                <input type="text" value={value} onChange={(e) => setValue(e.target.value)} className="input-group__input" placeholder="Search by title"
-                       aria-label="Recipient's username" aria-describedby="basic-addon2"/>
+                <input
+                    type="text"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="input-group__input"
+                    placeholder="Search by title"
+                    aria-label="Search by title"
+                    aria-describedby="basic-addon2"
+                />
                 <div className="input-group__append">
-                    <Button onClick={() => handleButton()}>Search</Button>
+                    <Button onClick={handleSearch}>Search</Button>
                 </div>
             </div>
-            <ProductGrid items={cards}/>
+            {isLoading ? (
+                <div>Loading...</div>
+            ) : (
+                <>
+                    <ProductGrid items={cards} />
+                    {cards.length ? <div className='d-flex w-100 justify-content-center catalog__button'>
+                        <Button onClick={()=> setLimit(limit + 9)}>Show more</Button>
+                    </div> : ''}
+                </>
+
+
+            )}
         </div>
     );
 }

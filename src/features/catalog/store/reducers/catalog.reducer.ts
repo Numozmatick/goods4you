@@ -1,8 +1,7 @@
-import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
+import { createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 import {Product} from "../../../../entities/product/types/product.types";
-import {RootState} from "@reduxjs/toolkit/query";
-import ProductService from "../../../../entities/product/api/productService"
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export interface ProductsState {
     isLoaded: boolean,
@@ -10,114 +9,45 @@ export interface ProductsState {
     categories: string[]
 }
 
+export const productApi = createApi({
+    reducerPath: 'productApi',
+    baseQuery: fetchBaseQuery({ baseUrl: 'https://dummyjson.com/' }),
+    endpoints: (builder) => ({
+        fetchProductsOfCategory: builder.query<Product[], { category: string, limit?: number, skip?: number }>({
+            query: ({ category, limit = 9, skip = 0 }) => `products/category/${category}?limit=${limit}&skip=${skip}`,
+        }),
+        getProductById: builder.query<Product, string>({
+            query: (id) => `products/${id}`,
+        }),
+        fetchAllProductsCategories: builder.query<string[], void>({
+            query: () => `products/categories`,
+        }),
+        getLimitedProducts: builder.query<Product[], { limit?: number, skip?: number, select?: string }>({
+            query: ({ limit = 9, skip = 0, select }) => `products?limit=${limit}&skip=${skip}${select ? `&select=${select}` : ''}`,
+        }),
+        searchProducts: builder.query<Product[], string>({
+            query: (query) => {
+                if(!query){
+                    return null
+                }
+               return `products/search?q=${query}`
+            },
+        }),
+    }),
+});
 
+export interface Catalog{
+    isLoaded: boolean,
+    products:Product[],
+    categories:string[],
+    currentProduct:Product,
+    response:any
+}
 
-
-export const fetchProductsOfCategory = createAsyncThunk<string,
-    void>(
-    'fetchProductsOfCategory',
-    async (payload: void, {dispatch, fulfillWithValue, extra}) => {
-        //@ts-ignore
-        const { category, limit = 9, skip = 0 } = payload;
-        dispatch(clearList())
-        dispatch(clearResponse())
-        const productService = new ProductService();
-        const response = await productService.getProductsByCategory(category, limit, skip);
-        if (response) {
-            dispatch(setResponse(response))
-            //@ts-ignore
-            dispatch(addToList(response.products))
-        }
-        dispatch(setIsLoaded(true))
-
-        return fulfillWithValue("finish")
-    }
-)
-
-export const getProductById = createAsyncThunk<string,
-    void>(
-    'getProductById',
-    async (payload: void, {dispatch, fulfillWithValue, extra}) => {
-        //@ts-ignore
-        const { id } = payload;
-        dispatch(clearList())
-        dispatch(clearResponse())
-        const productService = new ProductService();
-        const response = await productService.getProductById(id);
-        if (response) {
-            dispatch(setResponse([response]))
-            //@ts-ignore
-            dispatch(addToList([response]))
-        }
-        dispatch(setIsLoaded(true))
-
-        return fulfillWithValue("finish")
-    }
-)
-
-export const fetchAllProductsCategories = createAsyncThunk<string,
-    void>(
-    'fetchAllProductsCategories',
-    async (payload: void, {dispatch, fulfillWithValue, extra}) => {
-
-        dispatch(clearCategoriesList())
-        dispatch(clearResponse())
-        const productService = new ProductService();
-        const response = await productService.getProductCategories();
-        if (response) {
-            dispatch(setResponse(response))
-            dispatch(addToCategories(response))
-        }
-        dispatch(setIsLoaded(true))
-
-        return fulfillWithValue("finish")
-    }
-)
-
-export const getLimitedProducts = createAsyncThunk<string,
-    void>(
-    'getLimitedProducts',
-    async (payload: void, {dispatch, fulfillWithValue, extra}) => {
-        //@ts-ignore
-        const { limit = 9, skip = 0, select } = payload;
-        dispatch(clearList())
-        dispatch(clearResponse())
-        const productService = new ProductService();
-        const response = await productService.getLimitedProducts(limit, skip, select);
-        if (response) {
-            dispatch(setResponse(response))
-            //@ts-ignore
-            dispatch(addToList(response.products))
-        }
-        dispatch(setIsLoaded(true))
-
-        return fulfillWithValue("finish")
-    }
-)
-
-export const searchProducts = createAsyncThunk<string,
-    void>(
-    'searchProducts',
-    async (payload: void, {dispatch, fulfillWithValue, extra}) => {
-        //@ts-ignore
-        const { query } = payload;
-        dispatch(clearList())
-        const productService = new ProductService();
-        const response = await productService.searchProducts(query);
-        if (response) {
-            dispatch(setResponse(response))
-            //@ts-ignore
-            dispatch(addToList(response.products))
-        }
-        dispatch(setIsLoaded(true))
-
-        return fulfillWithValue("finish")
-    }
-)
-
-export const catalogInitialState = {
+export const catalogInitialState:Catalog = {
     isLoaded: false,
     products: [],
+    currentProduct:{id: null, title:''},
     categories:[],
     response: {}
 }
@@ -130,18 +60,15 @@ export const catalogSlice = createSlice({
             state.response = action.payload
         },
         addToList(state, action) {
-            // @ts-ignore
             state.products.push(...action.payload)
         },
         addToCategories(state, action) {
-            // @ts-ignore
             state.categories = [...action.payload];
         },
         setIsLoaded(state, action: PayloadAction<boolean>) {
             state.isLoaded = action.payload
         },
         clearResponse(state, action: PayloadAction<void>) {
-            // @ts-ignore
             state.response = undefined
         },
         clearList(state, action: PayloadAction<void>) {
@@ -155,7 +82,7 @@ export const catalogSlice = createSlice({
 
 
 export const getAll = (state) => {
-    return state.catalogSlice.inspections;
+    return state.catalogSlice;
 }
 
 export const getResponse = (state) => {
@@ -164,6 +91,15 @@ export const getResponse = (state) => {
 
 export const getIsLoaded = (state) =>
     state.catalogSlice.isLoaded;
+
+
+export const {
+    useFetchProductsOfCategoryQuery,
+    useGetProductByIdQuery,
+    useFetchAllProductsCategoriesQuery,
+    useGetLimitedProductsQuery,
+    useSearchProductsQuery,
+} = productApi;
 
 export const {addToList, clearResponse, clearList, setIsLoaded, setResponse, addToCategories, clearCategoriesList} = catalogSlice.actions;
 

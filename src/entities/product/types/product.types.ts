@@ -4,6 +4,7 @@ export interface Product {
     description?: any;
     price?: number;
     discount?: number;
+    discountPercentage?: number;
     rating?: number;
     stock?: number;
     brand?: string;
