@@ -8,7 +8,8 @@ export type ButtonProps = {
     onClick?: () => void;
     outline?: boolean | string;
     variant?: ButtonVariant;
-    fullWidth?: boolean | string
+    fullWidth?: boolean | string;
+    onKeyDown?:(e) => void;
 };
 
 const Button: React.FC<ButtonProps> = ({
@@ -17,6 +18,7 @@ const Button: React.FC<ButtonProps> = ({
                                            outline = false,
                                            variant = 'primary',
                                            fullWidth,
+                                           onKeyDown
                                        }) => {
     const buttonClass = [
         'button',
@@ -26,7 +28,7 @@ const Button: React.FC<ButtonProps> = ({
     ].filter(Boolean).join(' ');
 
     return (
-        <button className={buttonClass} onClick={onClick}>
+        <button className={buttonClass} onClick={onClick} onKeyDown={onKeyDown} tabIndex={0} role="button">
             {children}
         </button>
     );

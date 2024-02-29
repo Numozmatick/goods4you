@@ -1,27 +1,26 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import Button from "../../shared/ui/atoms/button/button";
 import CardForm from "../../entities/product/ui/cardForm";
 import './multiStepForm.css'
-import {fetchAllProductsCategories} from "../catalog/store/reducers/catalog.reducer";
-import {useDispatch, useSelector} from "react-redux";
+import {
+    useFetchAllProductsCategoriesQuery
+} from "../catalog/store/reducers/catalog.reducer";
 
 // Main form component
 const MultiStepForm = () => {
-    // const { formData } = useContext(FormContext);
-    //@ts-ignore
-    const categories = useSelector((state) => state.categories);
-    const cards = categories.map((catalog)=>{
-        return {
-            id: catalog.value,
-            title: catalog.value,
-        }
-    });
-    const dispatch = useDispatch();
-    useEffect(() => {
-        //@ts-ignore
-        dispatch(fetchAllProductsCategories());
+    const { data: categories = [], isLoading } = useFetchAllProductsCategoriesQuery();
 
-    }, []);
+    if (isLoading) {
+        return <div>Loading categories...</div>;
+    }
+
+    const cards = categories.map((category) => ({
+        //@ts-ignore
+        id: category.value,
+        //@ts-ignore
+        title: category.value,
+    }));
+
     return (
         <div className={'container'}>
             <div className={'multistepform'}>

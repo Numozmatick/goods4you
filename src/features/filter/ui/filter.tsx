@@ -1,22 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Button from "../../../shared/ui/atoms/button/button";
 import './filter.css'
-import {clearList, fetchProductsOfCategory} from "../../catalog/store/reducers/catalog.reducer";
+import {clearList, useFetchProductsOfCategoryQuery} from "../../catalog/store/reducers/catalog.reducer";
 import {useDispatch} from "react-redux";
 
 function Filter({ filters, selectedFilter, setSelectedFilter }) {
     const dispatch = useDispatch();
+    const [currentFilter, setCurrentFilter] = useState(selectedFilter)
 
     const handleCheckboxChange = (filter) => {
-        setSelectedFilter(filter.value);
+        setCurrentFilter(filter.value);
     };
 
-    const search = ()=>{
-        if(selectedFilter){
-            //@ts-ignore
-            dispatch(fetchProductsOfCategory({category:selectedFilter}))
-        }
-    }
+    const search = () => {
+        setSelectedFilter(currentFilter);
+    };
 
     const resetHandler = () => {
         setSelectedFilter(null);
@@ -35,7 +33,7 @@ function Filter({ filters, selectedFilter, setSelectedFilter }) {
                         <input
                             type="checkbox"
                             id={filter.value}
-                            checked={selectedFilter === filter.value}
+                            checked={currentFilter === filter.value}
                             onChange={() => handleCheckboxChange(filter)}
                         />
                         <div style={{height:'100%'}}>

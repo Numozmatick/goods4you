@@ -1,23 +1,17 @@
-/**
- * Этот Store исключительно создан для прохождения осмотра
- */
 import { configureStore} from '@reduxjs/toolkit';
-import {TypedUseSelectorHook, useDispatch, useSelector} from 'react-redux';
 import catalogReducer from "./reducers/catalog.reducer";
+import {productApi} from "./reducers/catalog.reducer";
 
 export const configureCatalogStore = (
 ) => {
   return configureStore({
-    reducer: catalogReducer,
-    //@ts-ignore
-    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    reducer: {
+      catalogReducer,
+      [productApi.reducerPath]: productApi.reducer,
+    },
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(productApi.middleware),
   });
 };
 
 export const store = configureCatalogStore();
-export type RootInspectionState = ReturnType<typeof catalogReducer>;
-export type CatalogStore = ReturnType<typeof configureCatalogStore>;
-export type CatalogDispatch = CatalogStore['dispatch'];
-export const useCatalogSelector: TypedUseSelectorHook<RootInspectionState> = useSelector;
-export const useCatalogDispatch = () => useDispatch<CatalogDispatch>();
-
