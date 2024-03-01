@@ -28,10 +28,24 @@ export const productApi = createApi({
         searchProducts: builder.query<Product[], string>({
             query: (query) => {
                 if(!query){
-                    return null
+                    return ''
                 }
-               return `products/search?q=${query}`
+               return `products/search?q=${query!}`
             },
+        }),
+        updateProduct: builder.mutation({
+            //@ts-ignore
+            query: ({id, params}) => {
+              if(!id && !params){
+                  return ''
+              }
+              return {
+                  url: `products/${id}`,
+                  method: 'PUT',
+                  body: {
+                      ...params,
+                  }
+            }},
         }),
     }),
 });
@@ -99,6 +113,7 @@ export const {
     useFetchAllProductsCategoriesQuery,
     useGetLimitedProductsQuery,
     useSearchProductsQuery,
+    useUpdateProductMutation,
 } = productApi;
 
 export const {addToList, clearResponse, clearList, setIsLoaded, setResponse, addToCategories, clearCategoriesList} = catalogSlice.actions;

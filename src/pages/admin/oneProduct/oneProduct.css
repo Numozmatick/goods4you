@@ -7,16 +7,22 @@
     margin-bottom: 15px;
     font-weight: 600;
 }
-
+.one-product__title{
+    margin: 20px 15px;
+}
 .one-product__param-title{
     margin-right: 10px;
     color: rgba(178, 181, 187, 1);
 
 }
-
+.one-product__btn{
+    margin-top: 30px;
+}
 .one-product__param-value{
     text-transform: capitalize;
 }
+
+
 
 
 
