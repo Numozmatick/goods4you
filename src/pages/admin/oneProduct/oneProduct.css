@@ -3,7 +3,7 @@
     margin-right: 40px;
 }
 
-.one-product__param{
+.one-product__parameters{
     margin-bottom: 15px;
     font-weight: 600;
 }
@@ -16,4 +16,18 @@
 
 .one-product__param-value{
     text-transform: capitalize;
+}
+
+
+
+@media (max-width: 768px) {
+    .one-product__content{
+        flex-wrap: wrap;
+    }
+    .one-product__parameters, .one-product__slider{
+        width: 100%;
+    }
+    .one-product__slider{
+        padding-bottom: 60px;
+    }
 }

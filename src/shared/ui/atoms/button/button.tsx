@@ -10,6 +10,8 @@ export type ButtonProps = {
     variant?: ButtonVariant;
     fullWidth?: boolean | string;
     onKeyDown?:(e) => void;
+    type?:"button" | "submit" | "reset";
+    form?: string;
 };
 
 const Button: React.FC<ButtonProps> = ({
@@ -18,7 +20,9 @@ const Button: React.FC<ButtonProps> = ({
                                            outline = false,
                                            variant = 'primary',
                                            fullWidth,
-                                           onKeyDown
+                                           onKeyDown,
+                                           form,
+                                            type
                                        }) => {
     const buttonClass = [
         'button',
@@ -28,7 +32,7 @@ const Button: React.FC<ButtonProps> = ({
     ].filter(Boolean).join(' ');
 
     return (
-        <button className={buttonClass} onClick={onClick} onKeyDown={onKeyDown} tabIndex={0} role="button">
+        <button className={buttonClass} onClick={onClick} onKeyDown={onKeyDown} tabIndex={0} role="button" form={form} type={type}>
             {children}
         </button>
     );

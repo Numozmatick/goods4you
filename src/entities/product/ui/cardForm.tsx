@@ -1,18 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './cardForm.css'
-
 interface CardProps {
     title: string;
     image?: string;
+    register?: any;
+    checked:boolean | string;
+    onCheck: (string) => void
 }
 
-function CardForm({title, image}:CardProps) {
+
+function CardForm({ title, register, checked, onCheck }:CardProps) {
     return (
         <div className={'card_form'}>
-            {/*<img className={'card_form__img'} src={image} alt={title}/>*/}
-
             <label className={'d-flex'}>
-                <input type="checkbox" className='card_form__input' />
+                <input
+                    type="checkbox"
+                    className='card_form__input'
+                    {...register(title)}
+                    checked={checked === title}
+                    onClick={() => onCheck(title)}
+                />
                 <span className={'card_form__custom_checkbox'}></span>
                 <div className={'card_form__title'}>{title}</div>
             </label>
@@ -20,4 +27,4 @@ function CardForm({title, image}:CardProps) {
     );
 }
 
-export default CardForm;
+export default CardForm

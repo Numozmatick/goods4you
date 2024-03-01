@@ -22,7 +22,7 @@ const OneProduct: React.FC = () => {
 
         <div className={'container one-product'}>
             <h2 className={'one-product__title'}>{product.title}</h2>
-            <div className={'d-flex'}>
+            <div className={'d-flex one-product__content'}>
                 <div className="one-product__slider">
                     <Slider images={product.images} />
                 </div>

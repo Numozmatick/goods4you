@@ -41,10 +41,10 @@ function Header({position, background}:HeaderProps) {
   return (
       <header className={`container header ${position || ''}`} style={{backgroundColor:background || 'transparent'}}>
           <div className="row header-row-position">
-              <div className="col-2 col-lg-10 d-flex align-items-center">
+              <a href={'/'} className="col-2 col-lg-10 d-flex align-items-center">
                       <Logo src={'/images/logo.svg'} alt={'logo'}/>
-              </div>
-              <div className="col-7 ml-auto d-lg-none desktop-menu">
+              </a>
+              <div className="col-6 ml-auto d-lg-none desktop-menu">
                   <Navbar items={items}>
                       <div className={'header__link'}>
                           <Link to={'/admin'}>For staff</Link>
